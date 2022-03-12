@@ -8,14 +8,23 @@ import pyautogui
 import shutil
 import os
 import logging
+import logging
+
 from os.path import exists, abspath
 from pathlib import Path
 
+def set_up_log(root_name: str) -> None: 
+    logging.root = logging.getLogger(root_name)
+    logging.basicConfig(level = logging.INFO)
+
+
+#If we want show a log in display
+set_up_log('AutomatizationWindows')
 
 # Wait 1 second between each command pyautogui
 pyautogui.PAUSE = 1  
 
-# Open browser Windowshttps://file-examples.com/index.php/sample-documents-download/sample-xls-download/
+# Open browser Windows https://file-examples.com/index.php/sample-documents-download/sample-xls-download/
 
 pyautogui.hotkey('win')
 pyautogui.write('edge')
@@ -57,6 +66,5 @@ elif(file_exists_downloads):
     logging.info('File copied successfully')  
 else:
     logging.error('Could not copy the file. File not found.')
-    
 
 
